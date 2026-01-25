@@ -1,7 +1,7 @@
 # Experiment: Study of Lists in Python
 ## Title
 
-# Study of Lists
+Study of Lists
 
 ## Aim
 
