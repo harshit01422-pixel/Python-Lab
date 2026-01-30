@@ -20,7 +20,7 @@ To perform insertion and deletion operations on lists
 To understand built-in list functions and methods
 
 ## Theory
-1. Introduction to Lists
+### 1. Introduction to Lists
 
 A list in Python is a built-in data structure used to store a collection of items in a single variable.
 
@@ -38,7 +38,7 @@ Example:
 
 my_list = [10, 20, 30, "Python", 5.5]
 
-2. Creating and Accessing Lists
+### 2. Creating and Accessing Lists
 
 Lists are created using square brackets [].
 Elements can be accessed using index values, starting from 0.
@@ -48,7 +48,7 @@ Example:
 my_list[0]   # First element
 my_list[-1]  # Last element
 
-3. List Indexing and Slicing
+### 3. List Indexing and Slicing
 
 Indexing is used to access individual elements
 
@@ -58,7 +58,7 @@ Example:
 
 my_list[1:4]
 
-4. List Operations
+### 4. List Operations
 a) Adding Elements
 
 append() – Adds an element at the end
@@ -75,7 +75,7 @@ pop() – Removes an element at a given index
 
 clear() – Removes all elements
 
-5. Built-in List Functions and Methods
+### 5. Built-in List Functions and Methods
 
 len() – Returns number of elements
 
@@ -89,7 +89,7 @@ sort() – Sorts the list
 
 reverse() – Reverses the list
 
-6. Traversing a List
+### 6. Traversing a List
 
 List elements can be accessed using loops such as for loop.
 
