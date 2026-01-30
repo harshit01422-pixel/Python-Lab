@@ -20,7 +20,7 @@ To understand immutability of tuples
 To use built-in tuple functions
 
 ## Theory
-1. Introduction to Tuples
+### 1. Introduction to Tuples
 
 A tuple in Python is a built-in data structure used to store a collection of elements in a single variable.
 
@@ -38,7 +38,7 @@ Example:
 
 my_tuple = (10, 20, 30, "Python", 5.5)
 
-2. Creating Tuples
+### 2. Creating Tuples
 
 Tuples are created using parentheses ().
 
@@ -51,7 +51,7 @@ A tuple with a single element (comma is mandatory):
 
 t2 = (5,)
 
-3. Accessing Tuple Elements
+### 3. Accessing Tuple Elements
 
 Tuple elements can be accessed using index values, starting from 0.
 
@@ -60,7 +60,7 @@ Example:
 t1[0]    # First element
 t1[-1]   # Last element
 
-4. Tuple Indexing and Slicing
+### 4. Tuple Indexing and Slicing
 
 Indexing accesses a single element
 
@@ -70,13 +70,13 @@ Example:
 
 t1[1:4]
 
-5. Tuple Immutability
+### 5. Tuple Immutability
 
 Tuples are immutable, meaning their elements cannot be modified, added, or removed after creation.
 
 However, tuple elements can be accessed and used in expressions.
 
-6. Built-in Tuple Functions
+### 6. Built-in Tuple Functions
 
 len() – Returns the number of elements
 
@@ -90,7 +90,7 @@ count() – Counts occurrences of an element
 
 index() – Returns index of first occurrence
 
-7. Traversing a Tuple
+### 7. Traversing a Tuple
 
 Tuple elements can be accessed using loops such as a for loop.
 
