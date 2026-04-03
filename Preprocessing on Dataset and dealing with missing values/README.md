@@ -1,4 +1,4 @@
-Here’s a rewritten version of your README that keeps the structure but uses different wording and phrasing:
+
 
 ---
 
