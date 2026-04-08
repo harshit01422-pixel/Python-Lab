@@ -1,97 +1,107 @@
-# 🗣️ Natural Language Processing (NLP) Techniques in Python
-## Name: Harshit
-## Branch: EnTC A3
-## PRN: 25070123053
-## 📄 Experiment Title
-Text Preprocessing and Feature Extraction using NLP in Python
-## 🎯 Objective
-The objective of this experiment is to understand the fundamental pipeline of **Natural Language Processing**, focusing on cleaning raw text data and converting it into numerical vectors that machine learning models can interpret.
-## 📌 Overview
-Human language is messy, unstructured, and filled with noise (punctuation, slang, stop words). NLP techniques allow us to:
- * **Clean** text by removing irrelevant characters.
- * **Standardize** words to their root forms.
- * **Vectorize** text to perform mathematical operations.
-These steps are the backbone of sentiment analysis, chatbots, and language translation.
-## 🧠 Key Concepts
- * Tokenization & Stop Word Removal
- * Stemming vs. Lemmatization
- * Part-of-Speech (POS) Tagging
- * Bag of Words (BoW)
- * TF-IDF (Term Frequency-Inverse Document Frequency)
- * Word Embeddings
-## 📘 Theory
-### 🔹 Text Cleaning & Standardization
-Before analysis, text must be simplified so the computer recognizes "Running" and "run" as the same concept.
-#### 1. Tokenization
-Breaking a sentence into individual words (tokens).
-> **Input:** "Python is fun." → **Output:** ['Python', 'is', 'fun']
-> 
-#### 2. Stemming
-Cutting off prefixes or suffixes to find the common root (often results in non-words).
- * *Example:* "Studying" → "Studi"
-#### 3. Lemmatization
-Reducing words to their dictionary base form (Lemma) using vocabulary and morphological analysis.
- * *Example:* "Better" → "Good"
-### 🔹 Feature Extraction (Vectorization)
-Machine learning models cannot read text; they read numbers.
-#### 1. Bag of Words (BoW)
-Counts the frequency of each word in a document. It ignores grammar and word order.
-#### 2. TF-IDF
-Weights words based on how unique they are to a specific document compared to a whole collection (corpus).
 
-#### 3. Word Embeddings (Word2Vec)
-Maps words into high-dimensional space where words with similar meanings are mathematically "close" to each other.
-### 🔹 Comparison: Stemming vs. Lemmatization
+
+---
+
+# 🗣️ Experiment 15: Natural Language Processing (NLP) Techniques
+**Name:** Harshit  
+**PRN:** 25070123053  
+**Batch:** A3  
+**Branch:** EnTC  
+
+---
+
+## 🎯 Project Objective
+The goal of this experiment is to implement and understand the fundamental pipeline of **Natural Language Processing** using Python's **NLTK** library. We focus on transforming unstructured "human" text into a structured format that machines can process through cleaning, normalization, and statistical analysis.
+
+
+---
+
+## 🧠 Key Concepts & Theory
+
+### 1. Tokenization
+The process of breaking down a stream of text into smaller units called **tokens**. 
+* **Word Tokenization:** Splitting sentences into individual words.
+* **Sentence Tokenization:** Splitting paragraphs into individual sentences.
+
+### 2. Stop Word Removal
+Removing commonly used words (e.g., "the", "is", "in") that carry very little unique information. This reduces the "noise" in the dataset and focuses on the keywords.
+
+### 3. Stemming vs. Lemmatization
+Both techniques aim to reach the "root" of a word, but they differ in complexity:
+* **Stemming (PorterStemmer):** A crude heuristic process that chops off the ends of words. It is fast but often results in non-words (e.g., "studies" becomes "studi").
+* **Lemmatization (WordNetLemmatizer):** Uses a dictionary (vocabulary) and morphological analysis to return the word to its base form, known as a **Lemma**.
+
 | Feature | Stemming | Lemmatization |
-|---|---|---|
-| **Speed** | Very Fast | Slower (Linguistic analysis) |
-| **Accuracy** | Lower (Crude chopping) | Higher (Context-aware) |
-| **Output** | May not be a real word | Always a valid word |
-| **Use Case** | Search engines, SEO | Sentiment Analysis, Chatbots |
-## ⚙️ Procedure
- 1. Install and import libraries (NLTK, Spacy, Scikit-learn).
- 2. Download necessary corpora (e.g., stopwords, punkt).
- 3. **Clean Text:** Convert to lowercase and remove special characters.
- 4. **Tokenize:** Split text into units.
- 5. **Normalize:** Apply Stemming or Lemmatization.
- 6. **Vectorize:** Convert the cleaned tokens into a TF-IDF or BoW matrix.
-## 📘 Implementation
-### Basic Cleaning with NLTK
+| :--- | :--- | :--- |
+| **Method** | Rule-based "chopping" | Dictionary-based lookup |
+| **Speed** | Very Fast | Slower (requires context) |
+| **Output** | May not be a real word | Always a valid dictionary word |
+| **Accuracy** | Lower | Higher |
+
+### 4. Part-of-Speech (POS) Tagging
+The process of marking up a word in a text as corresponding to a particular part of speech based on both its definition and its context.
+
+---
+
+## 💻 Implementation Highlights
+
+### Environment Setup
+To run these techniques, specific NLTK datasets must be downloaded:
 ```python
 import nltk
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
-
-# Remove Stopwords
-stop_words = set(stopwords.words('english'))
-filtered_text = [w for w in tokens if w not in stop_words]
-
-# Lemmatization
-lemmatizer = WordNetLemmatizer()
-root_word = lemmatizer.lemmatize("running", pos="v")
-
+nltk.download('punkt')        # For tokenization
+nltk.download('stopwords')    # For stop word lists
+nltk.download('wordnet')      # For lemmatization
+nltk.download('averaged_perceptron_tagger') # For POS Tagging
 ```
-### Vectorization with Scikit-learn
-```python
-from sklearn.feature_extraction.text import TfidfVectorizer
 
-vectorizer = TfidfVectorizer()
-tfidf_matrix = vectorizer.fit_transform(corpus)
+### Word Normalization Example
+Based on our experiment, the difference in output is clear:
+* **Stemming `["studies", "coding"]`** $\rightarrow$ `['studi', 'code']`
+* **Lemmatization `"studies"`** $\rightarrow$ `'study'`
 
-```
-## 📋 Key Functions
-| Operation | Library/Function | Purpose |
-|---|---|---|
-| **Tokenization** | word_tokenize() | Split sentences into words |
-| **Stopwords** | stopwords.words('english') | Filter out "the", "is", "at", etc. |
-| **Stemming** | PorterStemmer() | Fast, heuristic root finding |
-| **Vectorizing** | CountVectorizer() | Create a Bag of Words matrix |
-| **NER** | spacy.load('en_core_web_sm') | Identify Names, Dates, Locations |
-## 📂 Applications
- * **Spam Detection:** Filtering "junk" emails based on word patterns.
- * **Sentiment Analysis:** Determining if a review is positive or negative.
- * **Auto-Correction:** Suggesting words based on root similarity.
+### Frequency Distribution
+We utilize `FreqDist` to calculate the occurrence of each word. For the text *"Python is easy. It is widely used in data science."*, the distribution reveals:
+* `'is'`: 2 occurrences
+* `'Python'`: 1 occurrence
+
+---
+
+## 🏷️ Comprehensive POS Tag Reference
+During the POS Tagging phase, the model assigns specific labels to words. Below is the complete reference table used in this experiment:
+
+| Tag | Description | Example |
+| :--- | :--- | :--- |
+| **NNP** | Proper noun, singular | London, Microsoft |
+| **NN** | Noun, singular or mass | bicycle, air |
+| **NNS** | Noun, plural | bicycles, mountains |
+| **VBZ** | Verb, 3rd person singular present | writes, takes |
+| **VBP** | Verb, non-3rd person singular present | write, take |
+| **VBD** | Verb, past tense | wrote, took |
+| **VBG** | Verb, gerund or present participle | writing, taking |
+| **VBN** | Verb, past participle | written, taken |
+| **JJ** | Adjective | green, large |
+| **JJR** | Adjective, comparative | greener, larger |
+| **JJS** | Adjective, superlative | greenest, largest |
+| **RB** | Adverb | quickly, extremely |
+| **DT** | Determiner | the, a, an |
+| **PRP** | Personal pronoun | I, he, it |
+| **PRP$** | Possessive pronoun | my, his, its |
+| **IN** | Preposition / Subordinating conjunction | in, of, during |
+| **CC** | Coordinating conjunction | and, but, or |
+| **CD** | Cardinal number | one, 2026 |
+| **MD** | Modal | can, should, will |
+
+---
+
+## 📂 Real-World Applications
+* **Sentiment Analysis:** Using POS tagging and Lemmatization to determine if a product review is "Good" or "Bad".
+* **Chatbots:** Tokenizing user input to understand intent.
+* **Spam Filters:** Using word frequency (Bag of Words) to identify common phrases in junk mail.
+* **Search Engines:** Using Stemming to ensure a search for "running" also finds results for "run".
+
 ## 📌 Conclusion
-NLP techniques bridge the gap between human communication and machine understanding. By applying cleaning, lemmatization, and vectorization, we transform raw, chaotic text into structured data ready for predictive modeling.
-## ✨ Thank You
+Through this experiment, we successfully implemented a text preprocessing pipeline. By cleaning the data and using normalization techniques like Lemmatization, we can significantly improve the accuracy of any downstream machine learning model.
 
+---
+*Developed for the Python Programming Lab.*
